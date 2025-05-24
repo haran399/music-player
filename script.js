@@ -7,7 +7,7 @@ class MusicPlayer {
                 title: "Arjunar Villu",
                 artist: "Anirudh",
                 path: "songs/Arjunar_Villu-StarMusiQ.Com.mp3",
-                image: "images/Arjunar_Villu.jpg",
+                image: "images/Arjunar_Villu-StarMusiQ.Com.jpg",
                 relatedSongs: [1, 2, 3],
                 language: "Tamil"
             },
@@ -31,7 +31,7 @@ class MusicPlayer {
                 title: "Dub Theri Step",
                 artist: "Anirudh",
                 path: "songs/Dub_Theri_Step-StarMusiQ.Com.mp3",
-                image: "images/Dub_Theri_Step.jpg",
+                image: "images/Dub_Theri_Step-StarMusiQ.Com.jpg",
                 relatedSongs: [0, 1, 2],
                 language: "Tamil"
             },
@@ -55,7 +55,7 @@ class MusicPlayer {
                 title: "Ezhu Velaikkara",
                 artist: "Anirudh",
                 path: "songs/Ezhu Velaikkara [Starmusiq.info].mp3",
-                image: "images/Ezhu_Velaikkara.jpg",
+                image: "images/Ezhu Velaikkara [Starmusiq.info].jpg",
                 relatedSongs: [0, 1, 2],
                 language: "Tamil"
             },
@@ -63,7 +63,7 @@ class MusicPlayer {
                 title: "Furious Wings Theme",
                 artist: "Anirudh",
                 path: "songs/Furious Wings (Theme) [Starmusiq.cc].mp3",
-                image: "images/Furious_Wings.jpg",
+                image: "images/Furious Wings (Theme) [Starmusiq.cc].jpg",
                 relatedSongs: [0, 1, 2],
                 language: "Tamil"
             },
@@ -79,7 +79,7 @@ class MusicPlayer {
                 title: "Kaalai Theme",
                 artist: "Anirudh",
                 path: "songs/Kaalai-Theme-MassTamilan.com.mp3",
-                image: "images/Kaalai.jpg",
+                image: "images/Kaalai-Theme-MassTamilan.com.jpg",
                 relatedSongs: [0, 1, 2],
                 language: "Tamil"
             },
@@ -87,7 +87,7 @@ class MusicPlayer {
                 title: "Mun Sellada",
                 artist: "Anirudh",
                 path: "songs/Mun Sellada [Starmusiq.xyz].mp3",
-                image: "images/Mun_Sellada.jpg",
+                image: "images/Mun Sellada [Starmusiq.xyz].jpg",
                 relatedSongs: [0, 1, 2],
                 language: "Tamil"
             },
@@ -103,7 +103,7 @@ class MusicPlayer {
                 title: "Neruppu Da",
                 artist: "Anirudh",
                 path: "songs/Neruppu Da - IsaiKadal.com.mp3",
-                image: "images/Neruppu_Da.jpg",
+                image: "images/Neruppu Da - IsaiKadal.com.jpg",
                 relatedSongs: [0, 1, 2],
                 language: "Tamil"
             },
@@ -127,7 +127,7 @@ class MusicPlayer {
                 title: "VIP Title Song",
                 artist: "Anirudh",
                 path: "songs/VIP_(Title_Song)-StarMusiQ.Com.mp3",
-                image: "images/VIP.jpg",
+                image: "images/VIP_(Title_Song)-StarMusiQ.Com.jpg",
                 relatedSongs: [0, 1, 2],
                 language: "Tamil"
             },
@@ -218,12 +218,32 @@ class MusicPlayer {
     loadSong() {
         const song = this.songs[this.currentSongIndex];
         this.audio.src = song.path;
-        this.songTitle.textContent = song.title;
-        this.songArtist.textContent = song.artist;
-        this.songImage.src = song.image;
         this.audio.load();
-        this.updateRelatedSongs();
-        this.updatePlaylist();
+        
+        // Wait for the audio to be ready before updating UI
+        this.audio.onloadedmetadata = () => {
+            this.songTitle.textContent = song.title;
+            this.songArtist.textContent = song.artist;
+            
+            // Set image with error handling
+            this.songImage.src = song.image;
+            this.songImage.onerror = () => {
+                console.log(`Could not load image: ${song.image}`);
+                this.songImage.src = 'images/placeholder.jpg'; // Fallback image
+            };
+            
+            this.updateRelatedSongs();
+            this.updatePlaylist();
+            
+            // Update duration display
+            const duration = this.audio.duration;
+            const formatTime = (seconds) => {
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = Math.floor(seconds % 60);
+                return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+            };
+            this.duration.textContent = formatTime(duration);
+        };
     }
 
     togglePlay() {
@@ -250,8 +270,15 @@ class MusicPlayer {
         const prevSong = this.filteredSongs[prevFilteredIndex];
         this.currentSongIndex = this.songs.indexOf(prevSong);
         
+        // Load and play the previous song
         this.loadSong();
-        this.playSong();
+        this.audio.play().catch(error => {
+            console.error('Error playing song:', error);
+        });
+        
+        // Update UI
+        this.isPlaying = true;
+        this.playBtn.textContent = '⏸';
     }
 
     nextSong() {
@@ -267,8 +294,15 @@ class MusicPlayer {
         const nextSong = this.filteredSongs[nextFilteredIndex];
         this.currentSongIndex = this.songs.indexOf(nextSong);
         
+        // Load and play the next song
         this.loadSong();
-        this.playSong();
+        this.audio.play().catch(error => {
+            console.error('Error playing song:', error);
+        });
+        
+        // Update UI
+        this.isPlaying = true;
+        this.playBtn.textContent = '⏸';
     }
 
     playSong() {
