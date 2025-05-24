@@ -217,18 +217,23 @@ class MusicPlayer {
 
     loadSong() {
         const song = this.songs[this.currentSongIndex];
+        console.log('Loading song:', song.title, 'with image:', song.image);
         this.audio.src = song.path;
         this.audio.load();
         
         // Wait for the audio to be ready before updating UI
         this.audio.onloadedmetadata = () => {
+            console.log('Audio loaded:', song.title);
             this.songTitle.textContent = song.title;
             this.songArtist.textContent = song.artist;
             
             // Set image with error handling
             this.songImage.src = song.image;
+            this.songImage.onload = () => {
+                console.log('Image loaded successfully:', song.image);
+            };
             this.songImage.onerror = () => {
-                console.log(`Could not load image: ${song.image}`);
+                console.error('Image load failed:', song.image);
                 this.songImage.src = 'images/placeholder.jpg'; // Fallback image
             };
             
@@ -287,6 +292,11 @@ class MusicPlayer {
             song.path === this.songs[this.currentSongIndex].path
         );
         
+        if (currentFilteredIndex === -1) {
+            console.error('Current song not found in filtered list');
+            return;
+        }
+        
         // Calculate next index in filtered songs
         let nextFilteredIndex = (currentFilteredIndex + 1) % this.filteredSongs.length;
         
@@ -296,13 +306,15 @@ class MusicPlayer {
         
         // Load and play the next song
         this.loadSong();
-        this.audio.play().catch(error => {
-            console.error('Error playing song:', error);
-        });
         
-        // Update UI
-        this.isPlaying = true;
-        this.playBtn.textContent = '⏸';
+        // Wait a moment after loading before playing
+        setTimeout(() => {
+            this.audio.play().catch(error => {
+                console.error('Error playing song:', error);
+            });
+            this.isPlaying = true;
+            this.playBtn.textContent = '⏸';
+        }, 100); // Small delay to ensure audio is loaded
     }
 
     playSong() {
