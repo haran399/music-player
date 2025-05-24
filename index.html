@@ -7,49 +7,85 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="music-player">
-            <div class="player-header">
-                <h1>Music Player</h1>
-                <select id="playlist-selector">
-                    <option value="all">All Songs</option>
-                    <option value="tamil">Tamil Songs</option>
-                    <option value="english">English Songs</option>
-                    <option value="korean">Korean Songs</option>
-                </select>
+    <div class="spotify-container">
+        <nav class="spotify-nav">
+            <div class="logo">🎵 My Music</div>
+            <div class="nav-controls">
+                <button class="nav-btn">Search</button>
+                <button class="nav-btn">Your Library</button>
+                <button class="nav-btn">Create Playlist</button>
             </div>
-            <div class="song-info">
-                <img id="song-image" src="images/placeholder.jpg" alt="Song Cover">
-                <div class="song-details">
-                    <h2 id="song-title">No Song Selected</h2>
-                    <p id="song-artist">Artist</p>
+        </nav>
+
+        <main class="spotify-main">
+            <aside class="sidebar">
+                <div class="user-profile">
+                    <img src="images/profile-placeholder.jpg" alt="User Profile" class="profile-image">
+                    <div class="profile-info">
+                        <h3>Welcome</h3>
+                        <p>User</p>
+                    </div>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#" class="active">Home</a>
+                    <a href="#">Search</a>
+                    <a href="#">Your Library</a>
+                    <a href="#">Liked Songs</a>
+                    <a href="#">Recently Played</a>
+                </nav>
+            </aside>
+
+            <div class="content">
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h1>Good Morning</h1>
+                        <p>Here's what's playing</p>
+                    </div>
+                </div>
+
+                <div class="playlists-section">
+                    <h2>Your Playlists</h2>
+                    <div class="playlists-grid">
+                        <div class="playlist-card">
+                            <img src="images/playlist-placeholder.jpg" alt="Playlist">
+                            <div class="playlist-info">
+                                <h3>My Playlist</h3>
+                                <p>12 songs</p>
+                            </div>
+                        </div>
+                        <!-- More playlist cards will be added dynamically -->
+                    </div>
+                </div>
+
+                <div class="player-container">
+                    <div class="player-content">
+                        <div class="song-info">
+                            <img id="song-image" src="" alt="Song Cover">
+                            <div class="song-details">
+                                <h2 id="title">Song Title</h2>
+                                <p id="artist">Artist Name</p>
+                            </div>
+                        </div>
+                        <div class="controls">
+                            <button id="prev-btn" class="control-btn">⏮️</button>
+                            <button id="play-btn" class="control-btn">▶️</button>
+                            <button id="next-btn" class="control-btn">⏭️</button>
+                        </div>
+                        <div class="progress-container">
+                            <span id="current-time">0:00</span>
+                            <div id="progress-bar">
+                                <div id="progress"></div>
+                            </div>
+                            <span id="duration">0:00</span>
+                        </div>
+                        <div class="volume-controls">
+                            <button id="mute-btn" class="control-btn">🔇</button>
+                            <input type="range" id="volume-slider" min="0" max="100" value="50" class="volume-slider">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="controls">
-                <button id="prev-btn" class="control-btn">⏮</button>
-                <button id="play-btn" class="control-btn">▶</button>
-                <button id="next-btn" class="control-btn">⏭</button>
-            </div>
-            <div class="progress-bar">
-                <span id="current-time">0:00</span>
-                <div class="progress-container">
-                    <div id="progress" class="progress"></div>
-                </div>
-                <span id="duration">0:00</span>
-            </div>
-            <div class="volume-controls">
-                <button id="mute-btn" class="control-btn">🔊</button>
-                <input type="range" id="volume-slider" min="0" max="100" value="100">
-            </div>
-        </div>
-            </div>
-            <div class="related-songs">
-                <h3>Related Songs</h3>
-                <div class="song-list" id="related-songs-list">
-                    <!-- Related songs will be populated here -->
-                </div>
-            </div>
-        </div>
+        </main>
     </div>
     <script src="script.js"></script>
 </body>
