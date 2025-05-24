@@ -4,39 +4,116 @@ class MusicPlayer {
         this.isPlaying = false;
         this.songs = [
             {
-                title: "Song 1",
-                artist: "Artist 1",
-                path: "songs/song1.mp3",
-                image: "images/song1.jpg",
-                relatedSongs: [1, 3, 5]
+                title: "Arjunar Villu",
+                artist: "Anirudh",
+                path: "songs/Arjunar_Villu-StarMusiQ.Com.mp3",
+                image: "images/Arjunar_Villu.jpg",
+                relatedSongs: [1, 2, 3]
             },
             {
-                title: "Song 2",
-                artist: "Artist 2",
-                path: "songs/song2.mp3",
-                image: "images/song2.jpg",
-                relatedSongs: [0, 2, 4]
+                title: "Athiradi",
+                artist: "Anirudh",
+                path: "songs/Athiradi [Starmusiq.info].mp3",
+                image: "images/Athiradi.jpg",
+                relatedSongs: [0, 2, 3]
             },
             {
-                title: "Song 3",
-                artist: "Artist 3",
-                path: "songs/song3.mp3",
-                image: "images/song3.jpg",
-                relatedSongs: [1, 4, 0]
+                title: "Deerane",
+                artist: "Anirudh",
+                path: "songs/Deerane-StarMusiQ.Com.mp3",
+                image: "images/Deerane.jpg",
+                relatedSongs: [0, 1, 3]
             },
             {
-                title: "Song 4",
-                artist: "Artist 4",
-                path: "songs/song4.mp3",
-                image: "images/song4.jpg",
-                relatedSongs: [2, 0, 3]
+                title: "Dub Theri Step",
+                artist: "Anirudh",
+                path: "songs/Dub_Theri_Step-StarMusiQ.Com.mp3",
+                image: "images/Dub_Theri_Step.jpg",
+                relatedSongs: [0, 1, 2]
             },
             {
-                title: "Song 5",
-                artist: "Artist 5",
-                path: "songs/song5.mp3",
-                image: "images/song5.jpg",
-                relatedSongs: [3, 1, 0]
+                title: "Edhirthu Nil",
+                artist: "Anirudh",
+                path: "songs/Edhirthu_Nil-StarMusiQ.Com.mp3",
+                image: "images/Edhirthu_Nil.jpg",
+                relatedSongs: [0, 1, 2]
+            },
+            {
+                title: "Ellaappugazhum",
+                artist: "Anirudh",
+                path: "songs/Ellaappugazhum - Copy.mp3",
+                image: "images/Ellaappugazhum.jpg",
+                relatedSongs: [0, 1, 2]
+            },
+            {
+                title: "Ezhu Velaikkara",
+                artist: "Anirudh",
+                path: "songs/Ezhu Velaikkara [Starmusiq.info].mp3",
+                image: "images/Ezhu_Velaikkara.jpg",
+                relatedSongs: [0, 1, 2]
+            },
+            {
+                title: "Furious Wings Theme",
+                artist: "Anirudh",
+                path: "songs/Furious Wings (Theme) [Starmusiq.cc].mp3",
+                image: "images/Furious_Wings.jpg",
+                relatedSongs: [0, 1, 2]
+            },
+            {
+                title: "Hey Mama",
+                artist: "Anirudh",
+                path: "songs/Hey_Mama-StarMusiQ.Com.mp3",
+                image: "images/Hey_Mama.jpg",
+                relatedSongs: [0, 1, 2]
+            },
+            {
+                title: "Kaalai Theme",
+                artist: "Anirudh",
+                path: "songs/Kaalai-Theme-MassTamilan.com.mp3",
+                image: "images/Kaalai.jpg",
+                relatedSongs: [0, 1, 2]
+            },
+            {
+                title: "Mun Sellada",
+                artist: "Anirudh",
+                path: "songs/Mun Sellada [Starmusiq.xyz].mp3",
+                image: "images/Mun_Sellada.jpg",
+                relatedSongs: [0, 1, 2]
+            },
+            {
+                title: "Nenjae Yezhu",
+                artist: "Anirudh",
+                path: "songs/nenjae_yezhu-starmusiq.com.mp3",
+                image: "images/Nenjae_Yezhu.jpg",
+                relatedSongs: [0, 1, 2]
+            },
+            {
+                title: "Neruppu Da",
+                artist: "Anirudh",
+                path: "songs/Neruppu Da - IsaiKadal.com.mp3",
+                image: "images/Neruppu_Da.jpg",
+                relatedSongs: [0, 1, 2]
+            },
+            {
+                title: "Veeram",
+                artist: "Anirudh",
+                path: "songs/Veeram_Tamilmini.Net.mp3",
+                image: "images/Veeram.jpg",
+                relatedSongs: [0, 1, 2]
+            },
+            {
+                title: "Vetri Kodi",
+                artist: "Anirudh",
+                path: "songs/VETRIKODI_1.mp3mp3uli.mp3",
+                image: "images/Vetri_Kodi.jpg",
+                relatedSongs: [0, 1, 2]
+            },
+            {
+                title: "VIP Title Song",
+                artist: "Anirudh",
+                path: "songs/VIP_(Title_Song)-StarMusiQ.Com.mp3",
+                image: "images/VIP.jpg",
+                relatedSongs: [0, 1, 2]
             }
         ];
         this.currentSongIndex = 0;
