@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Music Player</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="music-player">
+            <div class="player-header">
+                <h1>Music Player</h1>
+            </div>
+            <div class="song-info">
+                <img id="song-image" src="images/placeholder.jpg" alt="Song Cover">
+                <div class="song-details">
+                    <h2 id="song-title">No Song Selected</h2>
+                    <p id="song-artist">Artist</p>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="prev-btn" class="control-btn">⏮</button>
+                <button id="play-btn" class="control-btn">▶</button>
+                <button id="next-btn" class="control-btn">⏭</button>
+            </div>
+            <div class="progress-bar">
+                <span id="current-time">0:00</span>
+                <div class="progress-container">
+                    <div id="progress" class="progress"></div>
+                </div>
+                <span id="duration">0:00</span>
+            </div>
+            <div class="volume-controls">
+                <button id="mute-btn" class="control-btn">🔊</button>
+                <input type="range" id="volume-slider" min="0" max="100" value="100">
+            </div>
+        </div>
+            </div>
+            <div class="related-songs">
+                <h3>Related Songs</h3>
+                <div class="song-list" id="related-songs-list">
+                    <!-- Related songs will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
